@@ -1,14 +1,16 @@
-package tests;
+package tests.browserstack;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
-import drivers.BrowserstackDriver;
+import drivers.DriverFactory;
 import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+
+import java.util.Objects;
 
 import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
@@ -16,11 +18,9 @@ import static com.codeborne.selenide.Selenide.open;
 public class TestBase {
     @BeforeAll
     static void beforeAll() {
-        Configuration.browser = BrowserstackDriver.class.getName();
+        Configuration.browser = new DriverFactory().getDriver();
         Configuration.browserSize = null;
         Configuration.timeout = 30000;
-        Configuration.screenshots = true;
-        Configuration.savePageSource = true;
     }
 
     @BeforeEach
@@ -32,18 +32,26 @@ public class TestBase {
 
     @AfterEach
     void addAttachments() {
-        String sessionId = null;
-        try {
-            sessionId = Selenide.sessionId().toString();
-            System.out.println(sessionId);
-        } catch (Exception ignored) {
-        }
-        closeWebDriver();
-        if (sessionId != null) {
+        if (Objects.equals(System.getProperty("deviceHost"), "browserstack") )
+        {
+            String sessionId = null;
             try {
-                Attach.addVideo(sessionId);
+                sessionId = Selenide.sessionId().toString();
+                System.out.println(sessionId);
             } catch (Exception ignored) {
             }
+            closeWebDriver();
+            if (sessionId != null) {
+                try {
+                    Attach.addVideo(sessionId);
+                } catch (Exception ignored) {
+                }
+            }
+        }
+        else{
+            Attach.screenshot();
+            Attach.pageSource();
+            closeWebDriver();
         }
     }
 }
