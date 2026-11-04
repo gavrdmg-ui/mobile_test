@@ -1,6 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
+import config.ConfigProvider;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.openqa.selenium.Capabilities;
@@ -26,12 +27,11 @@ public class LocalDriver implements WebDriverProvider {
 
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
                 .setPlatformName(ANDROID)
-                .setPlatformVersion("17.0")
-                .setDeviceName("Medium Phone")
+                .setPlatformVersion(ConfigProvider.localConfig.osVersion())
+                .setDeviceName(ConfigProvider.localConfig.deviceName())
                 .setApp(getAppPath())
-                .setAppPackage("org.wikipedia.alpha")
-                .setAppActivity("org.wikipedia.main.MainActivity");
-
+                .setAppPackage(ConfigProvider.localConfig.appPackage())
+                .setAppActivity(ConfigProvider.localConfig.appActivity());
         return new AndroidDriver(getAppiumServerUrl(), options);
     }
 

@@ -11,7 +11,7 @@ public class Browserstack {
         String url = String.format("https://api.browserstack.com/app-automate/sessions/%s.json", sessionId);
 
         return given()
-                .auth().basic(ConfigProvider.config.userName(), ConfigProvider.config.accessKey())
+                .auth().basic(ConfigProvider.browserStackConfig.userName(), ConfigProvider.browserStackConfig.accessKey())
                 .get(url)
                 .then()
                 .log().status()

@@ -1,4 +1,4 @@
-package tests.browserstack;
+package tests;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -32,8 +32,7 @@ public class TestBase {
 
     @AfterEach
     void addAttachments() {
-        if (Objects.equals(System.getProperty("deviceHost"), "browserstack") )
-        {
+        if (Objects.equals(System.getProperty("deviceHost"), "browserstack")) {
             String sessionId = null;
             try {
                 sessionId = Selenide.sessionId().toString();
@@ -47,8 +46,7 @@ public class TestBase {
                 } catch (Exception ignored) {
                 }
             }
-        }
-        else{
+        } else {
             Attach.screenshot();
             Attach.pageSource();
             closeWebDriver();

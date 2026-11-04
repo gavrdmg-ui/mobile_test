@@ -19,25 +19,25 @@ public class BrowserstackDriver implements WebDriverProvider {
         MutableCapabilities caps = new MutableCapabilities();
 
         HashMap<String, Object> bstackOptions = new HashMap<>();
-        bstackOptions.put("userName", ConfigProvider.config.userName());
-        bstackOptions.put("accessKey", ConfigProvider.config.accessKey());
-        bstackOptions.put("projectName", ConfigProvider.config.projectName());
-        bstackOptions.put("buildName", ConfigProvider.config.buildName());
-        bstackOptions.put("sessionName", ConfigProvider.config.sessionName());
-        bstackOptions.put("deviceName", ConfigProvider.config.deviceName());
-        bstackOptions.put("osVersion", ConfigProvider.config.osVersion());
-        bstackOptions.put("appiumVersion", ConfigProvider.config.appiumVersion());
+        bstackOptions.put("userName", ConfigProvider.browserStackConfig.userName());
+        bstackOptions.put("accessKey", ConfigProvider.browserStackConfig.accessKey());
+        bstackOptions.put("projectName", ConfigProvider.browserStackConfig.projectName());
+        bstackOptions.put("buildName", ConfigProvider.browserStackConfig.buildName());
+        bstackOptions.put("sessionName", ConfigProvider.browserStackConfig.sessionName());
+        bstackOptions.put("deviceName", ConfigProvider.browserStackConfig.deviceName());
+        bstackOptions.put("osVersion", ConfigProvider.browserStackConfig.osVersion());
+        bstackOptions.put("appiumVersion", ConfigProvider.browserStackConfig.appiumVersion());
 
         UiAutomator2Options options = new UiAutomator2Options();
         options.merge(capabilities);
-        options.setApp(ConfigProvider.config.app());
+        options.setApp(ConfigProvider.browserStackConfig.app());
         options.setCapability("bstack:options", bstackOptions);
-        caps.setCapability("appium:app", ConfigProvider.config.app());
+        caps.setCapability("appium:app", ConfigProvider.browserStackConfig.app());
         caps.setCapability("bstack:options", bstackOptions);
 
         try {
             return new AndroidDriver(
-                    new URL(ConfigProvider.config.baseUrl()), options);
+                    new URL(ConfigProvider.browserStackConfig.baseUrl()), options);
         } catch (MalformedURLException e) {
             throw new RuntimeException(e);
         }
