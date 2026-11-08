@@ -9,10 +9,7 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import screens.ArticleScreen;
-import screens.HomeScreen;
-import screens.OnBoardScreen;
-import screens.SearchScreen;
+import screens.*;
 import testdata.TestData;
 
 import java.util.Objects;
@@ -27,6 +24,7 @@ public class TestBase {
     SearchScreen searchScreen = new SearchScreen();
     ArticleScreen articleScreen = new ArticleScreen();
     public static TestData testData = new TestData();
+    SavedArticlesScreen savedArticles = new SavedArticlesScreen();
 
     @BeforeAll
     static void beforeAll() {

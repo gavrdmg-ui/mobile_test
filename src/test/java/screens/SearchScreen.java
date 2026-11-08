@@ -23,6 +23,7 @@ public class SearchScreen {
     private static final SelenideElement clearHistoryButton = $(accessibilityId("Clear reading history"));
     private static final SelenideElement backScreenButton = $(accessibilityId("Navigate up"));
     private static final SelenideElement emptyTitleText = $("[resource-id=\"org.wikipedia.alpha:id/history_empty_title\"]");
+    private static final SelenideElement savedButton = $(accessibilityId("Saved"));
 
 
     @Step("Закрываем всплывающий виджет")
@@ -82,6 +83,12 @@ public class SearchScreen {
     @Step("Проверяем что история поиска пустая")
     public SearchScreen historyIsEmpty() {
         emptyTitleText.shouldHave(text(emptySearchHistoryMessage));
+        return this;
+    }
+
+    @Step("Нажимаем на кнопку \"Saved\"")
+    public SearchScreen clickSavedButton() {
+        savedButton.click();
         return this;
     }
 

@@ -5,19 +5,9 @@ import org.junit.jupiter.api.Test;
 
 @DisplayName("Тесты поиска статей")
 public class SearchTests extends TestBase {
-    @Test
-    @DisplayName("Поиск статьи")
-    void successfulSearchTest() {
-        onBoardScreen.skipOnBoarding();
-        homeScreen.clickOnSearchButton();
-        searchScreen.closeWidget()
-                .clickOnSearchField()
-                .typeSearchQuery(testData.articleName)
-                .articlesListIsNotEmpty();
-    }
 
     @Test
-    @DisplayName("Переход в найденную статью")
+    @DisplayName("Поиск статье и переход в нее")
     void openArticleTest() {
         onBoardScreen.skipOnBoarding();
         homeScreen.clickOnSearchButton();
@@ -45,7 +35,5 @@ public class SearchTests extends TestBase {
                 .clearHistory()
                 .confirmClearHistory()
                 .historyIsEmpty();
-
-
     }
 }
