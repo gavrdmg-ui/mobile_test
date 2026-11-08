@@ -3,7 +3,7 @@ package config;
 import org.aeonbits.owner.Config;
 
 @Config.Sources({
-        "classpath:LocalConfig.properties"
+        "classpath:configurations/drivers/LocalConfig.properties"
 })
 public interface LocalConfig extends Config {
 

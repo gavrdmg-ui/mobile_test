@@ -9,6 +9,11 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import screens.ArticleScreen;
+import screens.HomeScreen;
+import screens.OnBoardScreen;
+import screens.SearchScreen;
+import testdata.TestData;
 
 import java.util.Objects;
 
@@ -16,6 +21,13 @@ import static com.codeborne.selenide.Selenide.closeWebDriver;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
+
+    OnBoardScreen onBoardScreen = new OnBoardScreen();
+    HomeScreen homeScreen = new HomeScreen();
+    SearchScreen searchScreen = new SearchScreen();
+    ArticleScreen articleScreen = new ArticleScreen();
+    public static TestData testData = new TestData();
+
     @BeforeAll
     static void beforeAll() {
         Configuration.browser = new DriverFactory().getDriver();

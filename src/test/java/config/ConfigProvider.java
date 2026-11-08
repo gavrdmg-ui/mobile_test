@@ -10,4 +10,7 @@ public class ConfigProvider {
 
     public static final LocalConfig localConfig =
             ConfigFactory.create(LocalConfig.class, System.getProperties());
+
+    public static final TestDataConfig testDataConfig =
+            ConfigFactory.create(TestDataConfig.class, System.getProperties());
 }
