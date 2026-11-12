@@ -42,7 +42,7 @@ public class ArticleTest extends TestBase {
         savedArticles.isArticleExist(testData.articleName)
                 .openArticle(testData.articleName);
         articleScreen.clickSaveButton()
-                .clickSaveButton()
+                .clickSavedButton()
                 .clickBackPhoneButton();
         savedArticles.articleWithTitleNotExist(testData.articleName);
     }

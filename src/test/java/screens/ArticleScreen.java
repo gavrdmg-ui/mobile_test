@@ -11,6 +11,8 @@ import static io.appium.java_client.AppiumBy.accessibilityId;
 public class ArticleScreen {
 
     private final static SelenideElement saveButton = $(accessibilityId("Save"));
+    private final static SelenideElement savedButton = $(accessibilityId("Saved"));
+
 
     @Step("Проверяем что статья содержит текст {text}")
     public ArticleScreen articleHasText(String text) {
@@ -26,6 +28,11 @@ public class ArticleScreen {
 
     public ArticleScreen clickSaveButton() {
         saveButton.click();
+        return this;
+    }
+
+    public ArticleScreen clickSavedButton() {
+        savedButton.click();
         return this;
     }
 
