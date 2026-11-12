@@ -3,6 +3,7 @@ package tests;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+@DisplayName("Тесты функционала статей ")
 public class ArticleTest extends TestBase {
     @Test
     @DisplayName("Добавление статье в сохраненные")
