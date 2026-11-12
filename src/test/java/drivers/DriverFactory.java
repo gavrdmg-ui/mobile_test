@@ -14,7 +14,7 @@ public class DriverFactory {
             browser = LocalDriver.class.getName();
         }
         if (browser == null) {
-            browser = LocalDriver.class.getName();
+            browser = BrowserstackDriver.class.getName();
         }
         return browser;
     }
