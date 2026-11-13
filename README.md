@@ -2,6 +2,18 @@
 
 Автоматизированные UI-тесты Android-приложения **Wikipedia**.
 
+## Содержание
+- [Технологии](#технологии)
+- [Что проверяют тесты](#что-проверяют-тесты)
+- [Структура проекта](#структура-проекта)
+- [Описание Java-классов](#описание-java-классов)
+- [Назначение пакетов](#назначение-пакетов)
+- [Локальный запуск](#локальный-запуск)
+- [Запуск в BrowserStack](#запуск-в-browserstack)
+- [Конфигурация и тестовые данные](#конфигурация-и-тестовые-данные)
+- [Allure-отчёт](#allure-отчёт)
+- [Allure TestOps](#allure-TestOps)
+- 
 ## Стек технологий
 
 | Технология | Назначение |
@@ -177,7 +189,7 @@ gradle clean test -DdeviceHost=browserstack
 gradle test -DdeviceHost=emulation -DarticleName="Selenium"
 ```
 
-## Allure-отчётность
+## Allure-отчёт
 
 В `TestBase` подключается listener `AllureSelenide`.
 
@@ -206,3 +218,9 @@ gradle allureServe
 - Локальный APK загружается из GitHub Releases проекта Wikimedia при отсутствии файла в `src/test/resources/apps/`.
 - Для BrowserStack используется загруженное в BrowserStack приложение с ID формата `bs://...`; при необходимости укажите актуальный ID из своего аккаунта.
 - REST Assured используется для обращения к BrowserStack API; отдельного набора API-тестов в проекте нет.
+
+## [Allure TestOps](https://allure.qa.guru/project/5438/test-cases)
+Интеграция с Allure TestOps прдоставляет возможность сохранять результаты прогонов и отслеживать историю запускок
+
+<img src="images/allure-testOps.PNG" alt="TestOps">
+<img src="images/allure-testOps2.PNG" alt="TestOps2">
