@@ -220,7 +220,7 @@ gradle allureServe
 - REST Assured используется для обращения к BrowserStack API; отдельного набора API-тестов в проекте нет.
 
 ## [Allure TestOps](https://allure.qa.guru/project/5438/test-cases)
-Интеграция с Allure TestOps прдоставляет возможность сохранять результаты прогонов и отслеживать историю запускок
+Интеграция с Allure TestOps предоставляет возможность сохранять результаты прогонов и отслеживать историю запускок
 
 <img src="images/allure-testOps.PNG" alt="TestOps">
 <img src="images/allure-testOps2.PNG" alt="TestOps2">
