@@ -13,11 +13,13 @@ public class SavedArticlesScreen {
         $x("//*[contains(@text, '" + article + "')]").shouldHave(text(article));
         return this;
     }
+
     @Step("Открываем сохраненную статью {article}")
     public SavedArticlesScreen openArticle(String article) {
         $x("//*[contains(@text, '" + article + "')]").click();
         return this;
     }
+
     @Step("Проверяем что на странице нет сохраненной статьи {article}")
     public SavedArticlesScreen articleWithTitleNotExist(String article) {
         assertFalse($x("//*[contains(@text, '" + article + "')]").exists());
